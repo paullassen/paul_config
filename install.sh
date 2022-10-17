@@ -7,6 +7,6 @@ SCRIPT=$(readlink -f "$0")
 DIR=$(dirname "$SCRIPT")
 
 mkdir $HOME/.tmux
-cp -r $DIR/tmux/* $HOME/.tmux/*
+cp -r $DIR/tmux/* $HOME/.tmux/
 cp $DIR/tmux.conf $HOME/.tmux.conf
 cat $DIR/tmux_rc >> $HOME/.bashrc
