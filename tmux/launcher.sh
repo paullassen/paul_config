@@ -1,3 +1,5 @@
-cd ~/tmux/sessions/example
+cd ~/.tmux/sessions/example
 tmux new -s example -d
-cd
+cd 
+tmux new -s home -d
+cd 
