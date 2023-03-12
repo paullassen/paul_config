@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt update
-sudo apt install neovim tmux -y
+sudo apt install neovim tmux gawk -y
 
 SCRIPT=$(readlink -f "$0")
 DIR=$(dirname "$SCRIPT")
