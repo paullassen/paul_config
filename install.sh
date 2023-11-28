@@ -21,20 +21,20 @@ sudo apt install build-essential \
          python3-venv \
          -y
 
-# Install nodejs
-curl -s https://deb.nodesource.com/setup_16.x | sudo bash
-sudo apt install nodejs -y
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-# Install fzf
-git clone https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
-# Create ssh-key
-ssh-keygen -t ed25519 
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+# # Install nodejs
+# curl -s https://deb.nodesource.com/setup_16.x | sudo bash
+# sudo apt install nodejs -y
+# sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+#        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# 
+# # Install fzf
+# git clone https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+# 
+# # Create ssh-key
+# ssh-keygen -t ed25519 
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_ed25519
 
 # Install personal config
 SCRIPT=$(readlink -f "$0")
