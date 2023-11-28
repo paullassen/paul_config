@@ -1,7 +1,3 @@
-#--------------------------------------
-#--------Start Personal Config---------
-#--------------------------------------
-# 
 # Define mkcd function
 mkcd() {
     mkdir -p "$1" && cd "$1"
@@ -18,16 +14,12 @@ fi
 # Use local history file at session start directory
 export HISTFILE=$(pwd)/.tmux_history
 
-# If not int tmux, run the tmux launcher
+# If not in tmux, run the tmuxer launcher
 if [ -z $TMUX ]; then
-    source ~/.tmux/launcher.sh
+    source $HOME/.config/tmuxer/launcher.sh
 fi
 
 # py function to alias python3
 py() {
     python3 "$@"
 }
-
-#--------------------------------------
-#---------End Personal Config----------
-#--------------------------------------

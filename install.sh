@@ -28,7 +28,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Install fzf
-git clone github.com/junegunn/fzf.git ~/.fzf
+git clone https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # Create ssh-key
@@ -39,13 +39,25 @@ ssh-add ~/.ssh/id_ed25519
 # Install personal config
 SCRIPT=$(readlink -f "$0")
 DIR=$(dirname "$SCRIPT")
+TMUXER_DIR=$HOME/.config/tmuxer
+TMUX_DIR=$HOME/.config/tmux
+NVIM_DIR=$HOME/.config/nvim
 
-mkdir  -p $HOME/.tmux/session/example
-cp -r $DIR/tmux/* $HOME/.tmux/
-ln -s $DIR/tmux.conf $HOME/.tmux.conf
+mkdir  -p $TMUXER_DIR/session/example
+mkdir -p $TMUX_DIR
+mkdir -p $NVIM_DIR
+# Iterate over all files in tmux folder and create symlinks
+for file in $DIR/tmux/*; do
+    ln -s $file $HOME/.config/tmux/$(basename $file)
+done
+# Iterate over all files in tmuxer folder and create symlinks
+for file in $DIR/tmuxer/*; do
+    ln -s $file $HOME/.config/tmuxer/$(basename $file)
+done
+# Iterate over all files in nvim folder and create symlinks
+for file in $DIR/nvim/*; do
+    ln -s $file $HOME/.config/nvim/$(basename $file)
+done
 
-mkdir -p $HOME/.config/nvim
-ln -s $DIR/init.vim $HOME/.config/nvim/init.vim
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo "# from github.com/paullassen/paul_config"  >> $HOME/.bashrc
-echo "source $SCRIPT_DIR/tmux_rc.sh" >> $HOME/.bashrc
+echo "source $HOME/.config/tmuxer/tmuxer.sh" >> $HOME/.bashrc
