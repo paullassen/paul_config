@@ -19,7 +19,18 @@ if [ -z $TMUX ]; then
     source $HOME/.config/tmuxer/launcher.sh
 fi
 
+# Define mkcd function
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
 # py function to alias python3
 py() {
     python3 "$@"
 }
+ask() { 
+	echo "$1" | chatgpt-cli chat --model gpt-4-1106-preview
+}
+cmd() {
+	echo "$1" | chatgpt-cli chat --system-message "Provide only the bash command that would solve this problem without any formatting or other text"
+}
+
